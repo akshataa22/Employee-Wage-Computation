@@ -20,11 +20,11 @@ public class EmployeeWage {
                 System.out.println("Day " + (day + 1) + ": Employee is Absent.");
                 break;
             case 1:
-                System.out.println("Day " + (day + 1) + ": Employee is Present (Full Time).");
+                System.out.println("Day " + (day + 1) + ": Employee is Present Full Day.");
                 dailyWage = wagePerHour * fullDayHour;
                 break;
             case 2:
-                System.out.println("Day " + (day + 1) + ": Employee is Present (Part Time).");
+                System.out.println("Day " + (day + 1) + ": Employee is Present Half Day.");
                 dailyWage = wagePerHour * partTimeHour;
                 break;
         }
