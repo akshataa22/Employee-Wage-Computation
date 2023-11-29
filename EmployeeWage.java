@@ -32,6 +32,6 @@ public class EmployeeWage {
         totalWage += dailyWage;
         System.out.println("Daily Wage: " + dailyWage);
     }
-        System.out.println("Total Monthly Wage: " + totalWage);
+        System.out.println("Total Wages for a month: " + totalWage);
     }
 }
