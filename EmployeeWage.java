@@ -2,7 +2,11 @@ package com.day8;
 
 import java.util.Random;
 
-class EmpWageBuilder {
+interface EmpWageCalculator {
+    void computeEmployeeWage();
+}
+
+class EmpWageBuilder implements EmpWageCalculator {
 
     private final String companyName;
     private final int wagePerHour;
@@ -25,6 +29,7 @@ class EmpWageBuilder {
         this.maxWorkingHours = maxWorkingHours;
     }
 
+    @Override
     public void computeEmployeeWage() {
         while (totalDaysWorked < maxWorkingDays && totalHoursWorked < maxWorkingHours) {
             int empCheck = new Random().nextInt(3); // using random function to generate 0, 1, or 2
@@ -65,10 +70,10 @@ public class EmployeeWage {
         System.out.println("Welcome to Employee Wage computation program.");
 
         // Example usage for two companies
-        EmpWageBuilder companyA = new EmpWageBuilder("Company A", 20, 8, 4, 20, 100);
+        EmpWageCalculator companyA = new EmpWageBuilder("Company A", 20, 8, 4, 20, 100);
         companyA.computeEmployeeWage();
 
-        EmpWageBuilder companyB = new EmpWageBuilder("Company B", 25, 9, 5, 22, 110);
+        EmpWageCalculator companyB = new EmpWageBuilder("Company B", 25, 9, 5, 22, 110);
         companyB.computeEmployeeWage();
     }
 }
