@@ -3,17 +3,12 @@ package com.day8;
 import java.util.Random;
 
 public class EmployeeWage {
-    private static final int wagePerHour = 20;
-    private static final int fullDayHour = 8;
-    private static final int partTimeHour = 4;
-    private static final int maxWorkingDays = 20;
-    private static final int maxWorkingHours = 100;
+    private static void computeEmployeeWage(String companyName, int wagePerHour, int fullDayHour,
+                                            int partTimeHour, int maxWorkingDays, int maxWorkingHours) {
+        int totalWage = 0;
+        int totalHoursWorked = 0;
+        int totalDaysWorked = 0;
 
-    private int totalWage;
-    private int totalHoursWorked;
-    private int totalDaysWorked;
-
-    private void calculateWage() {
         while (totalDaysWorked < maxWorkingDays && totalHoursWorked < maxWorkingHours) {
             int empCheck = new Random().nextInt(3); // using random function to generate 0, 1, or 2
 
@@ -22,14 +17,14 @@ public class EmployeeWage {
 
             switch (empCheck) {
                 case 0:
-                    System.out.println("Day " + (totalDaysWorked + 1) + ": Employee is Absent.");
+                    System.out.println(companyName + " - Day " + (totalDaysWorked + 1) + ": Employee is Absent.");
                     break;
                 case 1:
-                    System.out.println("Day " + (totalDaysWorked + 1) + ": Employee is Present Full Day.");
+                    System.out.println(companyName + " - Day " + (totalDaysWorked + 1) + ": Employee is Present Full Day.");
                     dailyHoursWorked = fullDayHour;
                     break;
                 case 2:
-                    System.out.println("Day " + (totalDaysWorked + 1) + ": Employee is Present Half Day.");
+                    System.out.println(companyName + " - Day " + (totalDaysWorked + 1) + ": Employee is Present Half Day.");
                     dailyHoursWorked = partTimeHour;
                     break;
             }
@@ -40,21 +35,16 @@ public class EmployeeWage {
             totalWage += dailyWage;
             System.out.println("Daily Wage: " + dailyWage);
         }
-    }
 
-    private void displayTotalWage() {
-        System.out.println("Total Wages for a month: " + totalWage);
-        System.out.println("Total Hours Worked: " + totalHoursWorked);
-        System.out.println("Total Days Worked: " + totalDaysWorked);
+        System.out.println(companyName + " - Total Wages for a month: " + totalWage);
+        System.out.println(companyName + " - Total Hours Worked: " + totalHoursWorked);
+        System.out.println(companyName + " - Total Days Worked: " + totalDaysWorked);
     }
 
     public static void main(String[] args) {
         System.out.println("Welcome to Employee Wage computation program.");
 
-        EmployeeWage wageCompute = new EmployeeWage();
-        wageCompute.calculateWage();
-
-        wageCompute.displayTotalWage();
+        computeEmployeeWage("Company A", 20, 8, 4, 20, 100);
+        computeEmployeeWage("Company B", 25, 9, 5, 22, 110);
     }
 }
-
